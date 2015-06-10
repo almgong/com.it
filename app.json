@@ -1,0 +1,7 @@
+{
+  "name": "Meals Prep Done Right",
+  "description": "Node.js app using Express 4",
+  "repository": "you-dont-need-to-know",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"]
+}
