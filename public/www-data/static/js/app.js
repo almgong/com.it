@@ -3,8 +3,9 @@
  * necessary logic (should refactor soon)
  **/
  define([
- 	'text!templates/loadingAnimation.html'
- 	], function(loadingAnimationHTML) {
+ 	'text!templates/loadingAnimation.html',
+ 	'captionjs'
+ 	], function(loadingAnimationHTML, captionjs) {
  	console.log('hoorah')
 
  	//code to run after DOM loads
@@ -22,10 +23,11 @@
  			}
  		});
 
- 		
-
-
-
+ 		$('img.captionjs').captionjs({
+ 			"class_name": 'captionjs',
+ 			'mode': 'animated',
+ 			'is_responsive': false
+ 		});
  	});	
 
  	//simply fade ins, etc to make loading content smoother

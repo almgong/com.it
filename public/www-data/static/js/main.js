@@ -7,7 +7,8 @@ require.config({
 		'underscore': 'lib/underscore-min',
 		'appViews': 'appViews',
 		'app': 'app',
-		'text': 'lib/text'
+		'text': 'lib/text',
+		'captionjs': 'lib/jquery.caption.min'
 	}
 });
 
