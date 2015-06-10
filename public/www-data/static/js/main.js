@@ -14,10 +14,8 @@ require.config({
 
 require(['jquery', 'underscore', 'text'], function($, _, t) {
 	require(['app', 'bootstrap'], function(app, bt) {
-		app.toggleLoadingAnimation();
-		setTimeout(function() {
-			app.smoothLoadContent(); 
-			app.toggleLoadingAnimation();
-		}, 1000);
+
+		app.smoothLoadContent(); 
+
 	});
 });
