@@ -179,7 +179,6 @@ transform: translateY(-21px);
 	box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.75);
 }
 .main {
-	display:none;
 	background-color: #B7BCD9;
 	min-height:400px;
 }
@@ -211,6 +210,12 @@ figcaption {
 	cursor:pointer;
 }
 
-.side-bar {
+.sidebar {
+	-webkit-transition: all .3s ease-in;
+	-moz-transition: all .3s ease-in;
+	-ms-transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	transition: all .3s ease-in;
 	padding-top:15px;
+	opacity:0;
 }

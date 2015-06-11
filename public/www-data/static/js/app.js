@@ -4,8 +4,9 @@
  **/
  define([
  	'text!templates/loadingAnimation.html',
- 	'captionjs'
- 	], function(loadingAnimationHTML, captionjs) {
+ 	'captionjs',
+ 	'appViews'
+ 	], function(loadingAnimationHTML, captionjs, appViews) {
  	console.log('hoorah')
 
  	//code to run after DOM loads
@@ -39,21 +40,24 @@
  		});
  	});	
 
- 	//simply fade ins, etc to make loading content smoother
+ 	//simply fade ins, etc to make loading content smoother. Only call this
+ 	// OR loadContent(), not both.
  	var smoothLoadContent = function() {
  		var nav = $('.top-navigation');
  		var main = $('.main');
 
  		//nav.css('opacity', 1);
 
- 		main.fadeIn(500);
- 		main.slideDown(700, 'swing', function() {
- 			console.log('complete')
- 		});
+ 		//main.fadeIn(500);
+ 		//main.slideDown(700, 'swing', function() {
+ 		//	console.log('complete')
+ 		//});
 
+ 		loadContent();
 
  	};
 
+ 	//function to toggle animation - may not end up needing
  	var toggleLoadingAnimation = function() {
 
  		//loading anymation IS present on page
@@ -67,11 +71,17 @@
  		}
  	};
 
+ 	//main driver that loads content via bb views
+ 	var loadContent = function() {
+ 		appViews.loadSidebar();
+ 	};
+
  	//modular functions
 
  	return {
  		smoothLoadContent:smoothLoadContent,
- 		toggleLoadingAnimation:toggleLoadingAnimation
+ 		toggleLoadingAnimation:toggleLoadingAnimation,
+ 		loadContent:loadContent
  	}
  	
  });
