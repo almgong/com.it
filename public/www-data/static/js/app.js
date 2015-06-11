@@ -40,23 +40,6 @@
  		});
  	});	
 
- 	//simply fade ins, etc to make loading content smoother. Only call this
- 	// OR loadContent(), not both.
- 	var smoothLoadContent = function() {
- 		var nav = $('.top-navigation');
- 		var main = $('.main');
-
- 		//nav.css('opacity', 1);
-
- 		//main.fadeIn(500);
- 		//main.slideDown(700, 'swing', function() {
- 		//	console.log('complete')
- 		//});
-
- 		loadContent();
-
- 	};
-
  	//function to toggle animation - may not end up needing
  	var toggleLoadingAnimation = function() {
 
@@ -79,7 +62,6 @@
  	//modular functions
 
  	return {
- 		smoothLoadContent:smoothLoadContent,
  		toggleLoadingAnimation:toggleLoadingAnimation,
  		loadContent:loadContent
  	}

@@ -11,6 +11,7 @@
  		el: $('.sidebar'),
  		render:function() {
  			this.$el.html(sidebarHTML);
+ 			$('.loading').remove();
  			this.$el.css('opacity', 1);
  		}
  	});

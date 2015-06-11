@@ -16,7 +16,7 @@ require.config({
 require(['jquery', 'underscore', 'text'], function($, _, t) {
 	require(['app', 'bootstrap'], function(app, bt) {
 
-		app.smoothLoadContent(); 
+		app.loadContent(); 
 
 	});
 });
