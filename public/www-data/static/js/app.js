@@ -28,6 +28,15 @@
  			'mode': 'animated',
  			'is_responsive': false
  		});
+
+ 		$('.timeline-item.inactive').hover(function() {
+ 			$(this).toggleClass('inactive');
+ 			$(this).find('img').toggleClass('inactive');
+ 		}, 
+ 		function() {
+ 			$(this).toggleClass('inactive');
+ 			$(this).find('img').toggleClass('inactive');
+ 		});
  	});	
 
  	//simply fade ins, etc to make loading content smoother

@@ -12,6 +12,9 @@ html, body {
 .light-purple {
 	color: #A0AEDB;
 }
+.alert-color {
+	color:#B40E2A;
+}
 
 .bubblingG {
 text-align: center;
@@ -147,7 +150,7 @@ transform: translateY(-21px);
 
 }
 
-/* TOP NAV */
+/* NAV */
 .top-navigation {
 	overflow:hidden;
 	opacity:0;
@@ -163,6 +166,10 @@ transform: translateY(-21px);
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
 	color:#1B62B0;
 	background-color:initial;
+}
+
+.navbar-brand {
+	float:none;
 }
 
 /* CONTENT AREAS */
@@ -187,4 +194,23 @@ figcaption {
   color: #fff;
   border: none;
   font-size:1.5em;
+}
+
+.timeline-item img, figure {
+	width:100% !important;
+}
+.timeline-item.inactive, .timeline-item.inactive img {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+    background-color: #000;
+    -webkit-transition: all .3s ease-in;
+	-moz-transition: all .3s ease-in;
+	-ms-transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	transition: all .3s ease-in;
+	cursor:pointer;
+}
+
+.side-bar {
+	padding-top:15px;
 }
