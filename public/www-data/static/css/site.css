@@ -153,7 +153,7 @@ transform: translateY(-21px);
 /* NAV */
 .top-navigation {
 	overflow:hidden;
-	opacity:0;
+	opacity:1;
 	-webkit-transition: all .3s ease-in;
 	-moz-transition: all .3s ease-in;
 	-ms-transition: all .3s ease-in;

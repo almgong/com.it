@@ -44,7 +44,7 @@
  		var nav = $('.top-navigation');
  		var main = $('.main');
 
- 		nav.css('opacity', 1);
+ 		//nav.css('opacity', 1);
 
  		main.fadeIn(500);
  		main.slideDown(700, 'swing', function() {
