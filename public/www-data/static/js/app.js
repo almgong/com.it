@@ -4,9 +4,8 @@
  **/
  define([
  	'text!templates/loadingAnimation.html',
- 	'captionjs',
  	'appViews'
- 	], function(loadingAnimationHTML, captionjs, appViews) {
+ 	], function(loadingAnimationHTML, appViews) {
  	console.log('hoorah')
 
  	//code to run after DOM loads
@@ -22,21 +21,6 @@
  			if(!$(this).parent().hasClass('active')) {
  				$(this).find('i, br').remove();
  			}
- 		});
-
- 		$('img.captionjs').captionjs({
- 			"class_name": 'captionjs',
- 			'mode': 'animated',
- 			'is_responsive': false
- 		});
-
- 		$('.timeline-item.inactive').hover(function() {
- 			$(this).toggleClass('inactive');
- 			$(this).find('img').toggleClass('inactive');
- 		}, 
- 		function() {
- 			$(this).toggleClass('inactive');
- 			$(this).find('img').toggleClass('inactive');
  		});
  	});	
 
