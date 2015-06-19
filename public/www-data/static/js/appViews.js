@@ -45,7 +45,6 @@
  	var loadMain = function() {
  		mainCont.render();
  		actionTimeline.render();
- 		$('.middle-col .loading').remove();
  		$('.main-content-wrapper').css('opacity', 1);
  	};
 
