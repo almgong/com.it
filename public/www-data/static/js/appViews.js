@@ -37,25 +37,26 @@
  	var ActionTimeline = Backbone.View.extend({
  		el:$('.action-timeline'),
  		render:function() {
- 			this.$el.html(actionTimelineHTML);
 
- 			//init captionjs
- 			$('img.captionjs').captionjs({
-	 			"class_name": 'captionjs',
-	 			'mode': 'animated',
-	 			'is_responsive': false
-	 		});
+ 			this.$el.html(actionTimelineHTML).promise().done(function() {
+ 				//init captionjs
+	 			$('img.captionjs').captionjs({
+		 			"class_name": 'captionjs',
+		 			'mode': 'animated',
+		 			'is_responsive': false
+		 		});
 
-	 		$('.timeline-item.inactive').hover(
-	 			function() {
-		 			$(this).toggleClass('inactive');
-		 			$(this).find('img').toggleClass('inactive');
-	 			}, 
-	 			function() {
-		 			$(this).toggleClass('inactive');
-		 			$(this).find('img').toggleClass('inactive');
-	 			}
-	 		);
+		 		$('.timeline-item.inactive').hover(
+		 			function() {
+			 			$(this).toggleClass('inactive');
+			 			$(this).find('img').toggleClass('inactive');
+		 			}, 
+		 			function() {
+			 			$(this).toggleClass('inactive');
+			 			$(this).find('img').toggleClass('inactive');
+		 			}
+		 		);
+ 			});
 
  		}//end render
  	});
