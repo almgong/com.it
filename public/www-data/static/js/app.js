@@ -3,12 +3,12 @@
  * necessary logic (should refactor soon)
  **/
  define([
+ 	'bb',
  	'text!templates/loadingAnimation.html',
  	'appViews'
- 	], function(loadingAnimationHTML, appViews) {
- 	console.log('hoorah')
+ 	], function(Backbone, loadingAnimationHTML, appViews) {
 
- 	//code to run after DOM loads
+ 	//code to run immediately after DOM loads (NO BB views, only routing)
  	$(function() {
  		var nav_ele = $('.top-navigation li a');	
 
@@ -22,6 +22,30 @@
  				$(this).find('i, br').remove();
  			}
  		});
+
+ 		var AppRouter = Backbone.Router.extend({
+
+ 			routes: {
+ 				'/':   		'main',
+ 				'profile': 	'profile',
+ 				'learn':    'learn'
+ 			},
+
+ 			main: function() {
+ 				console.log('loaded main')
+ 			},
+ 			profile:function() {
+ 				console.log('in profile')
+ 			},
+ 			learn:function() {
+ 				console.log('in learn')
+ 			}
+
+ 		});
+
+ 		Backbone.history.start();	//start history + routing
+
+ 		var router = new AppRouter();
  	});	
 
  	//function to toggle animation - may not end up needing

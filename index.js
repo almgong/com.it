@@ -29,6 +29,16 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
+//profile page
+app.get('/profile', function(req, res) {
+	res.render('index');
+});
+
+//learn
+app.get('/learn', function(req,res) {
+	res.render('index');
+});
+
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'));

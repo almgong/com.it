@@ -222,6 +222,10 @@ figcaption {
 	opacity:0;
 }
 
+.nav-sidebar li.active {
+	font-size:1.1em;
+}
+
 .main-content-wrapper {
 	-webkit-transition: all .3s ease-in;
 	-moz-transition: all .3s ease-in;

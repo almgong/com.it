@@ -69,6 +69,15 @@
  		$('.main-content-wrapper').css('opacity', 1);
  	};
 
+
+ 	/*********** PROFILE *************/
+
+ 	//note that no new views are needed, reusing views
+
+ 	/************ LEARN  **************/
+
+ 	//note that no new views are needed, reusing views
+
  	return {
  		loadSidebar:loadSidebar,
  		loadMain:loadMain
