@@ -194,7 +194,9 @@ figcaption {
   border: none;
   font-size:1.5em;
 }
-
+.action-timeline {
+	padding:5px;
+}
 .timeline-item img, figure {
 	width:100% !important;
 }
@@ -217,5 +219,14 @@ figcaption {
 	-o-transition: all .3s ease-in;
 	transition: all .3s ease-in;
 	padding-top:15px;
+	opacity:0;
+}
+
+.main-content-wrapper {
+	-webkit-transition: all .3s ease-in;
+	-moz-transition: all .3s ease-in;
+	-ms-transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	transition: all .3s ease-in;
 	opacity:0;
 }

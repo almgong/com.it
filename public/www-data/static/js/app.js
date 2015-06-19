@@ -57,6 +57,7 @@
  	//main driver that loads content via bb views
  	var loadContent = function() {
  		appViews.loadSidebar();
+ 		appViews.loadMain();
  	};
 
  	//modular functions
