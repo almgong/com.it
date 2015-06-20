@@ -172,6 +172,10 @@ transform: translateY(-21px);
 	float:none;
 }
 
+.nav li a {
+	cursor:pointer;
+}
+
 /* CONTENT AREAS */
 .panel {
 	-webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.75);

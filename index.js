@@ -36,7 +36,7 @@ app.get('/profile', function(req, res) {
 
 //learn
 app.get('/learn', function(req,res) {
-	res.render('index');
+	res.render('learn');
 });
 
 

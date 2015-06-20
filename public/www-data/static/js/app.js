@@ -39,13 +39,20 @@
  			},
  			learn:function() {
  				console.log('in learn')
+ 				appViews.loadLearn();
  			}
 
  		});
 
- 		Backbone.history.start();	//start history + routing
+ 		Backbone.history.start({pushState:true});	//start history + routing, pushstate enabled to avoid #
 
  		var router = new AppRouter();
+
+ 		//code for navigation
+ 		$('a.learn').on('click', function() {
+ 			router.navigate('learn');
+ 			appViews.loadLearn();
+ 		});
  	});	
 
  	//function to toggle animation - may not end up needing
@@ -64,8 +71,24 @@
 
  	//main driver that loads content via bb views
  	var loadContent = function() {
- 		appViews.loadSidebar();
- 		appViews.loadMain();
+ 		var location = window.location.href.split('/')
+ 		location = location[location.length - 1]		//gets the last ele
+
+ 		//index
+ 		if(location == '') {
+ 			//do nothing
+ 			console.log('loading index')
+ 		}
+ 		else if(location == 'profile') {
+ 			//load profile views
+ 			console.log('loading profile')
+ 		}
+ 		else if(location == 'learn') {
+ 			//load learn views
+ 			appViews.loadLearn();
+ 			console.log('loading learn')
+ 		}
+ 		
  	};
 
  	//modular functions

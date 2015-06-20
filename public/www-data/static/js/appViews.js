@@ -6,13 +6,44 @@
  	'bb',
  	'captionjs',
  	'text!templates/sidebar.template.html',
- 	'text!templates/main_content.template.html',
- 	'text!templates/action_timeline.template.html'
- 	], function(Backbone, captionjs, sidebarHTML, mainContentHTML, actionTimelineHTML) {
+ 	'text!templates/learn_main_content.template.html',
+ 	'text!templates/action_timeline.template.html',
+ 	'text!templates/learn_main.template.html'
+ 	], function(Backbone, captionjs, sidebarHTML, learnMainContentHTML, actionTimelineHTML, learnMainHTML) {
+
+ 	//main div, USED AS A WRAPPER VIEW FOR EACH PAGE
+ 	var Main = Backbone.View.extend({
+ 		el:$('.main.clearfix'),
+ 		baseHTML:null,		//defaults
+ 		cb:function(){},	//^
+ 		initialize:function(options) {
+ 			//options must have a baseHTML and callback function called cb
+ 			this.baseHTML = options.baseHTML;	//defines the initial structure needed by other views
+ 			this.cb = options.cb;				//callback for rendering the subviews
+ 		},
+ 		render:function() {
+ 			self = this;
+ 			self.$el.html(self.baseHTML).promise().done(function() {
+ 				self.cb();
+ 			});
+ 		}
+ 	});
+
+ 	var main = new Main({baseHTML:'', cb:null});	//preset default, should overrride in other view functions
+
+ 	/************ INDEX **************/
+
+ 	//
+
+ 	/*********** PROFILE *************/
+
+ 	//
+
+ 	/************ LEARN  **************/
 
  	//sidebar
  	var SideBar = Backbone.View.extend({
- 		el: $('.sidebar'),
+ 	
  		render:function() {
  			this.$el.html(sidebarHTML);
  			$('.left-col .loading').remove();
@@ -20,22 +51,22 @@
  		}
  	});
 
- 	var sideBar = new SideBar();
  	var loadSidebar = function() {
+ 		var sideBar = new SideBar({el: $('.sidebar')});
  		sideBar.render();
  	};
 
 
  	//main content (including timeline)
- 	var MainContent = Backbone.View.extend({
- 		el:$('.main-content'),
+ 	var LearnMainContent = Backbone.View.extend({
+ 		
  		render:function() {
- 			this.$el.html(mainContentHTML);
+ 			this.$el.html(learnMainContentHTML);
  		}
  	});
 
  	var ActionTimeline = Backbone.View.extend({
- 		el:$('.action-timeline'),
+ 	
  		render:function() {
 
  			this.$el.html(actionTimelineHTML).promise().done(function() {
@@ -61,26 +92,33 @@
  		}//end render
  	});
 
- 	var mainCont = new MainContent();
- 	var actionTimeline = new ActionTimeline();
- 	var loadMain = function() {
+ 	var loadMainContentLearn = function() {
+ 		var mainCont = new LearnMainContent({el:$('.main-content')});
+ 		var actionTimeline = new ActionTimeline({el:$('.action-timeline')});
  		mainCont.render();
  		actionTimeline.render();
  		$('.main-content-wrapper').css('opacity', 1);
  	};
 
+ 	//wrapper function for loading all of the learn page
+ 	var loadLearn = function() {
+ 		
+ 		var cb = function() {
+ 			loadSidebar();
+ 			loadMainContentLearn();
+ 		};
 
- 	/*********** PROFILE *************/
+ 		//main.remove();
+ 		main = null;
+ 		//$('.container').append('<div class="main clearfix"></div>');	//add main back
+ 		main = new Main({baseHTML:learnMainHTML, cb:cb});
+ 		main.render();
 
- 	//note that no new views are needed, reusing views
 
- 	/************ LEARN  **************/
-
- 	//note that no new views are needed, reusing views
+ 	};
 
  	return {
- 		loadSidebar:loadSidebar,
- 		loadMain:loadMain
+ 		loadLearn:loadLearn
  	}
  	
  });
