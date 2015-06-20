@@ -8,8 +8,10 @@
  	'text!templates/sidebar.template.html',
  	'text!templates/learn_main_content.template.html',
  	'text!templates/action_timeline.template.html',
- 	'text!templates/learn_main.template.html'
- 	], function(Backbone, captionjs, sidebarHTML, learnMainContentHTML, actionTimelineHTML, learnMainHTML) {
+ 	'text!templates/learn_main.template.html',
+ 	'text!templates/home.template.html'
+ 	], function(Backbone, captionjs, sidebarHTML, learnMainContentHTML, actionTimelineHTML,
+ 	 learnMainHTML, homeHTML) {
 
  	//main div, USED AS A WRAPPER VIEW FOR EACH PAGE
  	var Main = Backbone.View.extend({
@@ -31,9 +33,23 @@
 
  	var main = new Main({baseHTML:'', cb:null});	//preset default, should overrride in other view functions
 
- 	/************ INDEX **************/
+ 	/************ INDEX/HOME **************/
 
- 	//
+ 	//since the homepage is static, really just need to load html from template (no ajax, etc.)
+ 	var loadHome = function() {
+
+ 		//where the subviews get loaded (none for home)
+ 		var cb = function() {
+ 			//intentionally empty
+ 		};
+
+ 		//main.remove();
+ 		main = null;
+ 		//$('.container').append('<div class="main clearfix"></div>');	//add main back
+ 		main = new Main({baseHTML:homeHTML, cb:cb});
+ 		main.render();
+ 	};
+
 
  	/*********** PROFILE *************/
 
@@ -92,6 +108,18 @@
  		}//end render
  	});
 
+ 	var LearnModal = Backbone.View.extend({
+
+ 		render:function() {
+ 			this.$el.modal('show');
+ 		}
+ 	});
+
+ 	var loadLearnModal = function() {
+ 		var learnModal = new LearnModal({el:$('#learn-modal')});
+ 		learnModal.render();
+ 	};
+
  	var loadMainContentLearn = function() {
  		var mainCont = new LearnMainContent({el:$('.main-content')});
  		var actionTimeline = new ActionTimeline({el:$('.action-timeline')});
@@ -100,10 +128,15 @@
  		$('.main-content-wrapper').css('opacity', 1);
  	};
 
- 	//wrapper function for loading all of the learn page
+ 	//wrapper function for loading all of the learn page - calling this by itself will load everything
  	var loadLearn = function() {
  		
+ 		//where the subviews get loaded
  		var cb = function() {
+ 			//initial modal
+ 			loadLearnModal();
+
+ 			//individual content
  			loadSidebar();
  			loadMainContentLearn();
  		};
@@ -118,7 +151,8 @@
  	};
 
  	return {
- 		loadLearn:loadLearn
+ 		loadLearn:loadLearn,
+ 		loadHome:loadHome
  	}
  	
  });

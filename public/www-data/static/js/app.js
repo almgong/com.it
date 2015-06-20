@@ -28,7 +28,8 @@
  			routes: {
  				'/':   		'main',
  				'profile': 	'profile',
- 				'learn':    'learn'
+ 				'learn':    'learn',
+ 				'learn/:topic/:exercise': 'learnExercise'
  			},
 
  			main: function() {
@@ -40,6 +41,9 @@
  			learn:function() {
  				console.log('in learn')
  				appViews.loadLearn();
+ 			},
+ 			learnExercise:function(topic, ex) {
+ 				console.log('individual ex');
  			}
 
  		});
@@ -50,8 +54,36 @@
 
  		//code for navigation
  		$('a.learn').on('click', function() {
+ 			//styling
+ 			$(this).parent().addClass('active');
+ 			$('a.home').parent().removeClass('active').find('i, br').remove();
+ 			$('a.profile').parent().removeClass('active').find('i, br').remove();
+
+ 			//actual navigation
  			router.navigate('learn');
  			appViews.loadLearn();
+ 		});
+ 		$('a.home').on('click', function() {
+ 			$(this).parent().addClass('active');
+ 			$('a.learn').parent().removeClass('active').find('i, br').remove();
+ 			$('a.profile').parent().removeClass('active').find('i, br').remove();
+
+ 			//actual navigation
+ 			router.navigate('/');
+ 			appViews.loadHome();
+
+ 		});
+ 		$('a.profile').on('click', function() {
+ 			$(this).parent().addClass('active');
+ 			$('a.home').parent().removeClass('active').find('i, br').remove();
+ 			$('a.learn').parent().removeClass('active').find('i, br').remove();
+
+ 		});
+
+ 		//temp - still working on this - postpone until after landing page is done
+ 		$('a.topic-link').on('click', function() {
+ 			console.log('clicked individual');
+ 			router.navigate("learn/Education/intro-to-ed-2");
  		});
  	});	
 
@@ -76,7 +108,8 @@
 
  		//index
  		if(location == '') {
- 			//do nothing
+ 			//load landing page
+ 			appViews.loadHome();
  			console.log('loading index')
  		}
  		else if(location == 'profile') {
