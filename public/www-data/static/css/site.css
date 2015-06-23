@@ -4,7 +4,10 @@ html, body {
 	font-size:14px;
 	background-color:#F2F2F2;
 }
-
+form {
+	display:block;
+	margin:10px 0;
+}
 /* BRAND FONT COLORS/ATTRIBUTES */
 .very-light-purple {
 	color:#EAEBF4;
@@ -243,12 +246,28 @@ figcaption {
 }
 
 .main-content-wrapper {
-	-webkit-transition: all .3s ease-in;
-	-moz-transition: all .3s ease-in;
-	-ms-transition: all .3s ease-in;
-	-o-transition: all .3s ease-in;
-	transition: all .3s ease-in;
+	-webkit-transition: opacity .3s ease-in;
+	-moz-transition: opacity .3s ease-in;
+	-ms-transition: opacity .3s ease-in;
+	-o-transition: opacity .3s ease-in;
+	transition: opacity .3s ease-in;
 	opacity:0;
+}
+
+.landing-section {
+	-webkit-transition: opacity .4s ease-in;
+	-moz-transition: opacity .4s ease-in;
+	-ms-transition: opacity .4s ease-in;
+	-o-transition: opacity .4s ease-in;
+	transition: opacity .4s ease-in;
+	opacity:0;
+
+	/*-webkit-transition: padding-top .2s ease-in;
+	-moz-transition: padding-top .2s ease-in;
+	-ms-transition: padding-top .2s ease-in;
+	-o-transition: padding-top .2s ease-in;
+	transition: padding-top .2s ease-in-out;
+	padding-top:10px;*/
 }
 
 
@@ -274,4 +293,78 @@ figcaption {
 /** HOME **/
 .home-body {
 	padding:15px;
+	font-size:20px;
+	font-weight:bold;
+}
+
+.home-body .row {
+	min-height: 500px;
+}
+
+.intro-text,
+.closer-body{
+	padding-top:10%;
+	padding-bottom:10%;
+}
+
+.intro-get-started-btn {
+	color:white;
+}
+
+.intro-get-started-btn a.btn,
+.closer a.btn {
+	color:white;
+	background-color:#337ab7;
+}
+
+.intro-get-started-btn a.btn:hover,
+.closer a.btn:hover {
+	color:#B7BCD9;
+}
+
+.intro-section-title {
+	margin:5px 0 10px 0;
+}
+
+.principle {	
+	margin-bottom: 10px;
+}
+
+.principle-body,
+.feature-body {
+	border:1px solid transparent;
+	border-radius: 50%;
+	min-height:200px;
+	margin-bottom:5px;
+}
+
+.principle-header {
+	font-size:16px;
+}
+
+.principle-text,
+.feature-text {
+	font-size:14px;
+}
+
+.feature {
+
+}
+.feature.col-sm-6 {
+	margin-top:5px;
+}
+.feature-title {
+	font-size:18px;
+}
+
+.feature-title,
+.feature-body,
+.feature-text {
+	margin-bottom:5px;
+}
+
+.feature-text p {
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
 }

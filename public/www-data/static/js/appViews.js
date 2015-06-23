@@ -40,7 +40,46 @@
 
  		//where the subviews get loaded (none for home)
  		var cb = function() {
- 			//intentionally empty
+ 			//set scroll listener
+ 			if (!window.setLandingScroll) {	//if not already in place
+
+ 				window.setLandingScroll = true;
+
+ 				var options = {
+ 					start_distance_from_top: 55,	//px distance of first ele from top (excludes top nav, etc.)
+ 					element_size: 500
+ 				};
+
+ 				$(window).on('scroll', function() {
+ 					setTimeout(function() {
+	 					if($(window).scrollTop() >= (options.element_size)/2 - options.start_distance_from_top) {
+	 						//principles
+	 						if (!$('.principles').hasClass('loaded')) {
+	 							$('.principles').css('opacity', 1).addClass('loaded');
+	 						}
+	 					}
+	 					if($(window).scrollTop() >= options.start_distance_from_top + (options.element_size)) {
+	 						//features
+	 						if (!$('.features-single').hasClass('loaded')) {
+	 							$('.features-single').css('opacity', 1).addClass('loaded');
+	 						}
+	 					}
+	 					if($(window).scrollTop() >= options.start_distance_from_top + (options.element_size*2.2)) {
+	 						//features part 2
+	 						if (!$('.features-double').hasClass('loaded')) {
+	 							console.log('feats 2')
+	 							$('.features-double').css('opacity', 1).addClass('loaded');
+	 						}
+	 					}
+	 					if($(window).scrollTop() >= options.start_distance_from_top*2 + (options.element_size*3.2)) {
+	 						//closer
+	 						if(!$('.closer').hasClass('loaded')) {
+	 							$('.closer').css('opacity', 1).addClass('loaded');
+	 						}
+	 					}
+ 					}, 25);
+ 				});
+ 			}	
  		};
 
  		//main.remove();
