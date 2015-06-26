@@ -8,6 +8,13 @@ form {
 	display:block;
 	margin:10px 0;
 }
+
+.divider {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height:2px;
+	background-color: #d3d3d3;
+}
 /* BRAND FONT COLORS/ATTRIBUTES */
 .very-light-purple {
 	color:#EAEBF4;
@@ -162,12 +169,23 @@ transform: translateY(-21px);
 	-ms-transition: all .3s ease-in;
 	-o-transition: all .3s ease-in;
 	transition: all .3s ease-in;
+
+	background: #b7bcd9; /* Old browsers */
+	background: -moz-linear-gradient(top, #b7bcd9 1%, #b7bcd9 1%, #b7bed8 3%, #b7bed8 7%, #9aa8cf 74%, #9aa8cf 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#b7bcd9), color-stop(1%,#b7bcd9), color-stop(3%,#b7bed8), color-stop(7%,#b7bed8), color-stop(74%,#9aa8cf), color-stop(100%,#9aa8cf)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #b7bcd9 1%,#b7bcd9 1%,#b7bed8 3%,#b7bed8 7%,#9aa8cf 74%,#9aa8cf 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #b7bcd9 1%,#b7bcd9 1%,#b7bed8 3%,#b7bed8 7%,#9aa8cf 74%,#9aa8cf 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #b7bcd9 1%,#b7bcd9 1%,#b7bed8 3%,#b7bed8 7%,#9aa8cf 74%,#9aa8cf 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #b7bcd9 1%,#b7bcd9 1%,#b7bed8 3%,#b7bed8 7%,#9aa8cf 74%,#9aa8cf 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7bcd9', endColorstr='#9aa8cf',GradientType=0 ); /* IE6-9 */
+	
 }
 .top-navigation .nav {
 	text-align: center
 }
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-	color:#1B62B0;
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover,
+.active .fa {
+	color:#1B62B0 !important;
 	background-color:initial;
 }
 
@@ -185,9 +203,13 @@ transform: translateY(-21px);
 	-moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 0.75);
 	box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.75);
 }
+
 .main {
-	background-color: #B7BCD9;
 	min-height:400px;
+}
+
+.main, footer {
+	background-color: #EAEBF4;
 }
 
 .content-frame {
