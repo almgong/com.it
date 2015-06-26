@@ -160,6 +160,25 @@ transform: translateY(-21px);
 
 }
 
+/* Mainly used in learn, but can be useful across the app */
+
+.animation-delay-1 {
+	-webkit-animation-delay: .1s; /* Chrome, Safari, Opera */
+    animation-delay: .1s;
+}
+.animation-delay-2 {
+	-webkit-animation-delay: .2s; /* Chrome, Safari, Opera */
+    animation-delay: .2s;
+}
+.animation-delay-3 {
+	-webkit-animation-delay: .3s; /* Chrome, Safari, Opera */
+    animation-delay: .3s;
+}
+.animation-delay-4 {
+	-webkit-animation-delay: .4s; /* Chrome, Safari, Opera */
+    animation-delay: .4s;
+}
+
 /* NAV */
 .top-navigation {
 	overflow:hidden;
@@ -205,7 +224,7 @@ transform: translateY(-21px);
 }
 
 .main {
-	min-height:400px;
+	min-height:90vh;
 }
 
 .main, footer {
