@@ -6,11 +6,12 @@
  	'bb',
  	'captionjs',
  	'text!templates/sidebar.template.html',
+ 	'text!templates/learn_landing.template.html',
  	'text!templates/learn_main_content.template.html',
  	'text!templates/action_timeline.template.html',
  	'text!templates/learn_main.template.html',
  	'text!templates/home.template.html'
- 	], function(Backbone, captionjs, sidebarHTML, learnMainContentHTML, actionTimelineHTML,
+ 	], function(Backbone, captionjs, sidebarHTML, learnLandingHTML, learnMainContentHTML, actionTimelineHTML,
  	 learnMainHTML, homeHTML) {
 
  	//main div, USED AS A WRAPPER VIEW FOR EACH PAGE
@@ -96,6 +97,40 @@
 
  	/************ LEARN  **************/
 
+ 	//LEARN LANDING/SELECTION PAGE
+
+ 	//like in landing page, really just inserting html straight in since it's mostly static
+ 	//will need some db work, but it should be very simple, so no additional view needed
+ 	var loadLearnLanding = function() {
+
+ 		//cb for subviews
+ 		var cb = function() {
+ 			//bind events after rendering
+ 			$('.learn-card img.captionjs').captionjs({
+	 			"class_name": 'captionjs',
+	 			'mode': 'animated',
+	 			'is_responsive': false
+	 		});
+
+	 		$('.learn-body').not('.inactive').hover(function() {
+	 			$(this).toggleClass('animated pulse infinite');
+	 		},
+	 		function() {
+	 			$(this).toggleClass('animated pulse infinite');
+	 		});
+
+	 		$('.learn-body').not('.inactive').on('click', function() {
+	 			loadLearnIndividual();
+	 		});
+ 		};
+
+ 		main = null;
+ 		main = new Main({baseHTML:learnLandingHTML, cb:cb});
+ 		main.render();
+ 	};
+
+ 	//	INDIVIDUAL
+
  	//sidebar
  	var SideBar = Backbone.View.extend({
  	
@@ -147,18 +182,6 @@
  		}//end render
  	});
 
- 	var LearnModal = Backbone.View.extend({
-
- 		render:function() {
- 			this.$el.modal('show');
- 		}
- 	});
-
- 	var loadLearnModal = function() {
- 		var learnModal = new LearnModal({el:$('#learn-modal')});
- 		learnModal.render();
- 	};
-
  	var loadMainContentLearn = function() {
  		var mainCont = new LearnMainContent({el:$('.main-content')});
  		var actionTimeline = new ActionTimeline({el:$('.action-timeline')});
@@ -167,13 +190,11 @@
  		$('.main-content-wrapper').css('opacity', 1);
  	};
 
- 	//wrapper function for loading all of the learn page - calling this by itself will load everything
- 	var loadLearn = function() {
+ 	//wrapper function for loading an individual learn page
+ 	var loadLearnIndividual = function() {
  		
  		//where the subviews get loaded
  		var cb = function() {
- 			//initial modal
- 			loadLearnModal();
 
  			//individual content
  			loadSidebar();
@@ -182,7 +203,6 @@
 
  		//main.remove();
  		main = null;
- 		//$('.container').append('<div class="main clearfix"></div>');	//add main back
  		main = new Main({baseHTML:learnMainHTML, cb:cb});
  		main.render();
 
@@ -190,7 +210,8 @@
  	};
 
  	return {
- 		loadLearn:loadLearn,
+ 		loadLearnLanding:loadLearnLanding,
+ 		loadLearnIndividual:loadLearnIndividual,
  		loadHome:loadHome
  	}
  	

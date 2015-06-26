@@ -28,7 +28,7 @@
  			routes: {
  				'/':   		'main',
  				'profile': 	'profile',
- 				'learn':    'learn',
+ 				'/learn':    'learn',
  				'learn/:topic/:exercise': 'learnExercise'
  			},
 
@@ -39,11 +39,12 @@
  				console.log('in profile')
  			},
  			learn:function() {
+ 				appViews.loadLearnLanding();
  				console.log('in learn')
- 				appViews.loadLearn();
  			},
- 			learnExercise:function(topic, ex) {
+ 			learnIndividual:function(topic, ex) {
  				console.log('individual ex');
+ 				appViews.loadLearnIndividual();
  			}
 
  		});
@@ -61,7 +62,7 @@
 
  			//actual navigation
  			router.navigate('learn');
- 			appViews.loadLearn();
+ 			appViews.loadLearnLanding();
  		});
  		$('a.home').on('click', function() {
  			$(this).parent().addClass('active');
@@ -81,7 +82,7 @@
  		});
 
  		//temp - still working on this - postpone until after landing page is done
- 		$('a.topic-link').on('click', function() {
+ 		$('.learn-body').not('.inactive').on('click', function() {
  			console.log('clicked individual');
  			router.navigate("learn/Education/intro-to-ed-2");
  		});
@@ -118,8 +119,8 @@
  		}
  		else if(location == 'learn') {
  			//load learn views
- 			appViews.loadLearn();
- 			console.log('loading learn')
+ 			appViews.loadLearnLanding();
+ 			console.log('loading learn landing')
  		}
  		
  	};

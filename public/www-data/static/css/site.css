@@ -272,22 +272,26 @@ figcaption {
 
 
 /** LEARN **/
-.topic {
-
+.learn-card {
+	min-height:200px;
+	margin-top:15px;
 }
 
-.topic-img img {
-	width:100%;
+.learn-body {
+	padding:5px;
+	background-color: white;
+	cursor: pointer;
+	box-shadow:0px 3px 5px 0px rgba(0, 0, 0, 0.137);
+}
+
+.learn-card img {
+	width:250px;
 	border-radius:50%;
 	overflow:hidden;
 }
 
-.topic a {
-	cursor:pointer;
-}
-
-.modal-body {
-	overflow:hidden;
+.learn-title {
+	font-size:1.2em;
 }
 
 /** HOME **/
