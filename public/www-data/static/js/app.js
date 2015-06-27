@@ -26,7 +26,6 @@
 
  			//actual navigation
  			router.navigate('learn', {trigger: true});
- 			appViews.loadLearnLanding();
  		});
  		$('a.home').on('click', function() {
  			$(this).parent().addClass('active');
@@ -35,8 +34,6 @@
 
  			//actual navigation
  			router.navigate('', {trigger: true});
- 			appViews.loadHome();
-
  		});
  		$('a.profile').on('click', function() {
  			$(this).parent().addClass('active');
@@ -69,23 +66,24 @@
  		var location = window.location.href.split('/')
  		location = location[location.length - 1]		//gets the last ele
 
+ 		//now handled by appRouter, see appRouter.js
  		//index
  		if(location == '') {
  			//load landing page
- 			appViews.loadHome();
- 			console.log('loading index')
+ 			//appViews.loadHome();
+ 			//console.log('loading index')
  		}
  		else if(location == 'profile') {
  			//load profile views
- 			console.log('loading profile')
+ 			//console.log('loading profile')
  		}
  		else if(location == 'learn') {
  			//load learn views
- 			appViews.loadLearnLanding();
- 			console.log('loading learn landing')
+ 			//appViews.loadLearnLanding();
+ 			//console.log('loading learn landing')
  		}
  		else {
- 			appViews.loadLearnIndividual();
+ 			//appViews.loadLearnIndividual();
  		}
  		
  	};

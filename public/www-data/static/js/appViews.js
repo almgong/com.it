@@ -18,7 +18,6 @@
  **/
  define([
  	'bb',
- 	'appRouter',
  	'captionjs',
  	'text!templates/sidebar.template.html',
  	'text!templates/learn_landing.template.html',
@@ -26,7 +25,7 @@
  	'text!templates/action_timeline.template.html',
  	'text!templates/learn_main.template.html',
  	'text!templates/home.template.html'
- 	], function(Backbone, router, captionjs, sidebarHTML, learnLandingHTML, learnMainContentHTML, actionTimelineHTML,
+ 	], function(Backbone, captionjs, sidebarHTML, learnLandingHTML, learnMainContentHTML, actionTimelineHTML,
  	 learnMainHTML, homeHTML) {
 
  	//main div, USED AS A WRAPPER VIEW FOR EACH PAGE
@@ -120,6 +119,7 @@
 
  		//cb for subviews
  		var cb = function() {
+
  			//bind events after rendering
  			$('.learn-card img.captionjs').captionjs({
 	 			"class_name": 'captionjs',
@@ -135,8 +135,11 @@
 	 		});
 
 	 		$('.learn-body').not('.inactive').on('click', function() {
-	 			router.navigate('learn/education/intro-to-ed-2');
-	 			loadLearnIndividual();
+
+	 			//allows for this unfortunate circular logic
+	 			require(['appRouter'], function(router) {
+	 				router.navigate('learn/education/intro-to-ed-2', {trigger:true});
+	 			});
 	 		});
  		};
 

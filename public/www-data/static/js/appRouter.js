@@ -4,8 +4,9 @@
  * the defined functions here.
  **/
 define([
-	'bb'
-	], function(Backbone) {
+	'bb',
+	'appViews'
+	], function(Backbone, appViews) {
 
 	var AppRouter = Backbone.Router.extend({
 
@@ -13,29 +14,30 @@ define([
 			'':   		'main',
 			'profile': 'profile',
 			'learn':   'learn',
-			'learn/:topic/:exercise': 'learnExercise'
+			'learn/:topic/:exercise': 'learnIndividual'
 		},
 
 		main: function() {
+			appViews.loadHome();
 			console.log('Navigated to main');
 		},
 		profile:function() {
 			console.log('navigated to profile')
 		},
 		learn:function() {
-			//appViews.loadLearnLanding();
+			appViews.loadLearnLanding();
 			console.log('navigated to learn')
 		},
 		learnIndividual:function(topic, ex) {
 			console.log('navigated to individual exercise');
-			//appViews.loadLearnIndividual();
+			appViews.loadLearnIndividual();
 		}
 
 	});
 
 
  	var router = new AppRouter();
- 	
+
  	return router;	//return instance of appRouter
 
  });
