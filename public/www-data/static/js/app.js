@@ -1,91 +1,53 @@
 /**
  * Driver file that will initialize and offer any 
- * necessary logic (should refactor soon)
+ * necessary logic (should refactor soon). This should only run ONCE
+ * for session.
  **/
  define([
  	'bb',
  	'text!templates/loadingAnimation.html',
- 	'appViews'
- 	], function(Backbone, loadingAnimationHTML, appViews) {
+ 	'appViews',
+ 	'appRouter'
+ 	], function(Backbone, loadingAnimationHTML, appViews, router) {
 
  	//code to run immediately after DOM loads (NO BB views, only routing)
  	$(function() {
- 		var nav_ele = $('.top-navigation li a');	
 
- 		nav_ele.hover(function() {
- 			if(!$(this).parent().hasClass('active')) {
- 				$(this).append('<br/><i class="fa fa-circle light-purple"></i>');
- 			}
- 		},
- 		function() {
- 			if(!$(this).parent().hasClass('active')) {
- 				$(this).find('i, br').remove();
- 			}
- 		});
-
- 		var AppRouter = Backbone.Router.extend({
-
- 			routes: {
- 				'/':   		'main',
- 				'profile': 	'profile',
- 				'/learn':    'learn',
- 				'learn/:topic/:exercise': 'learnExercise'
- 			},
-
- 			main: function() {
- 				console.log('loaded main')
- 			},
- 			profile:function() {
- 				console.log('in profile')
- 			},
- 			learn:function() {
- 				appViews.loadLearnLanding();
- 				console.log('in learn')
- 			},
- 			learnIndividual:function(topic, ex) {
- 				console.log('individual ex');
- 				appViews.loadLearnIndividual();
- 			}
-
- 		});
+ 		//router = router.router;	//because appRouter module returns 
 
  		Backbone.history.start({pushState:true});	//start history + routing, pushstate enabled to avoid #
-
- 		var router = new AppRouter();
 
  		//code for navigation
  		$('a.learn').on('click', function() {
  			//styling
  			$(this).parent().addClass('active');
- 			$('a.home').parent().removeClass('active').find('i, br').remove();
- 			$('a.profile').parent().removeClass('active').find('i, br').remove();
+ 			$('a.home').parent().removeClass('active');
+ 			$('a.profile').parent().removeClass('active');
 
  			//actual navigation
- 			router.navigate('learn');
+ 			router.navigate('learn', {trigger: true});
  			appViews.loadLearnLanding();
  		});
  		$('a.home').on('click', function() {
  			$(this).parent().addClass('active');
- 			$('a.learn').parent().removeClass('active').find('i, br').remove();
- 			$('a.profile').parent().removeClass('active').find('i, br').remove();
+ 			$('a.learn').parent().removeClass('active');
+ 			$('a.profile').parent().removeClass('active');
 
  			//actual navigation
- 			router.navigate('/');
+ 			router.navigate('', {trigger: true});
  			appViews.loadHome();
 
  		});
  		$('a.profile').on('click', function() {
  			$(this).parent().addClass('active');
- 			$('a.home').parent().removeClass('active').find('i, br').remove();
- 			$('a.learn').parent().removeClass('active').find('i, br').remove();
+ 			$('a.home').parent().removeClass('active');
+ 			$('a.learn').parent().removeClass('active');
+
+ 			//actual navigation
+ 			router.navigate('profile', {trigger:true});
 
  		});
 
- 		//temp - still working on this - postpone until after landing page is done
- 		$('.learn-body').not('.inactive').on('click', function() {
- 			console.log('clicked individual');
- 			router.navigate("learn/Education/intro-to-ed-2");
- 		});
  	});	
 
  	//function to toggle animation - may not end up needing
@@ -121,6 +83,9 @@
  			//load learn views
  			appViews.loadLearnLanding();
  			console.log('loading learn landing')
+ 		}
+ 		else {
+ 			appViews.loadLearnIndividual();
  		}
  		
  	};

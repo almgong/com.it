@@ -202,10 +202,10 @@ transform: translateY(-21px);
 .top-navigation .nav {
 	text-align: center
 }
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover,
-.active .fa {
-	color:#1B62B0 !important;
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+	color:white !important;
 	background-color:initial;
+	text-decoration: underline;
 }
 
 .navbar-brand {

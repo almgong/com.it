@@ -1,9 +1,24 @@
 /**
- * Backbone logic for rendering views
- * 
+ * Backbone logic for rendering views.
+ * All views should be defined here with any other loading logic/wrappers.
+ *
+ * Current views:
+ *  LANDING PAGE:
+ *	- Main 				//the main structure of the view that holds subviews with content, acts as structure
+ *
+ *  LEARN:
+ *
+ *  LEARN INDIVIDUAL:
+ *	- SideBar 			//subview for sidebar in learn individual
+ * 	- LearnMainContent 	//subview for the middle content in learn individual, includes some structure for timeline
+ * 	- ActionTimeline 	//the timeline at bottom of learn ind. page that allows for navigation + awareness of location
+ *
+ *  PROFILE:
+ * 	
  **/
  define([
  	'bb',
+ 	'appRouter',
  	'captionjs',
  	'text!templates/sidebar.template.html',
  	'text!templates/learn_landing.template.html',
@@ -11,7 +26,7 @@
  	'text!templates/action_timeline.template.html',
  	'text!templates/learn_main.template.html',
  	'text!templates/home.template.html'
- 	], function(Backbone, captionjs, sidebarHTML, learnLandingHTML, learnMainContentHTML, actionTimelineHTML,
+ 	], function(Backbone, router, captionjs, sidebarHTML, learnLandingHTML, learnMainContentHTML, actionTimelineHTML,
  	 learnMainHTML, homeHTML) {
 
  	//main div, USED AS A WRAPPER VIEW FOR EACH PAGE
@@ -120,6 +135,7 @@
 	 		});
 
 	 		$('.learn-body').not('.inactive').on('click', function() {
+	 			router.navigate('learn/education/intro-to-ed-2');
 	 			loadLearnIndividual();
 	 		});
  		};
@@ -136,7 +152,7 @@
  	
  		render:function() {
  			this.$el.html(sidebarHTML);
- 			$('.left-col .loading').remove();
+ 			$('.left-col .loading').remove();	//MAY NO LONGER BE NEEDED
  			this.$el.css('opacity', 1);
  		}
  	});

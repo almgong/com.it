@@ -39,6 +39,11 @@ app.get('/learn', function(req,res) {
 	res.render('learn');
 });
 
+app.get('/learn/:topic/:excercise_slug', function(req, res) {
+	console.log('Entered: ' + req.params.excercise_slug)
+	res.render('learn');
+});
+
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'));
