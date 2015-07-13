@@ -22,6 +22,7 @@ app.set('port', (process.env.PORT || 5000));
 
 //static
 app.use('/static', express.static(__dirname + appPath + 'static'));
+app.use(express.static('public'));
 
 /** default landing **/
 app.get('/', function(req, res) {
